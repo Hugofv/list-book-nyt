@@ -27,7 +27,7 @@ import { containerModal, boxModal } from './styles';
 import { Hiperlink } from '../../components/Hiperlink';
 
 
-const List = ({ books, categories, list_book_category, list_categories }) => {
+const List = ({ books, categories, loading, list_book_category, list_categories }) => {
 
   useEffect(() => list_categories(), [list_categories]);
 
@@ -41,6 +41,7 @@ const List = ({ books, categories, list_book_category, list_categories }) => {
     setCategory(category)
   }
 
+  if (loading) return <CircularProgress />
   return (
     <Fragment>
       <Box mb={5} m='2%'>
@@ -95,7 +96,7 @@ const List = ({ books, categories, list_book_category, list_categories }) => {
 
           <Box mb={2} css={boxModal} p={4} overflow='auto'>
             <Box>
-              <img src={showBook.book.book_image} />
+              <img width='100%' src={showBook.book.book_image} />
             </Box>
 
             <Box mb={3}>
@@ -146,7 +147,8 @@ const List = ({ books, categories, list_book_category, list_categories }) => {
 
 const mapStateToProps = (state) => ({
   books: state.book.books,
-  categories: state.book.categories
+  categories: state.book.categories,
+  loading: state.book.loading
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
