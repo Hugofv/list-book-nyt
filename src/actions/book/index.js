@@ -1,7 +1,7 @@
 import { urlAPI, apiKey } from '../index'
 
-export const list_book = () => dispatch => {
-  fetch(`${urlAPI}/current/food-and-fitness.json?api-key=${apiKey}`, {
+export const list_book_category = (category) => dispatch => {
+  fetch(`${urlAPI}/current/${category}.json?api-key=${apiKey}`, {
     method: 'GET'
   })
     .then(response => response.status === 200 && response.json())

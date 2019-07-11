@@ -11,6 +11,7 @@ const fontWeight = 400
 export default createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
+    outline: none;
   }
   html {
     font-family: sans-serif;
@@ -20,7 +21,6 @@ export default createGlobalStyle`
   }
   html, body {
     width: 100%;
-    height: 100%;
   }
   body {
     margin: 0;
