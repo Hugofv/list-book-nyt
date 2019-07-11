@@ -8,7 +8,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case 'LIST_REQUEST': {
-      return { ...state, loading: true, error: false }
+      return { ...state, loading: true }
     }
 
     case 'LIST_BOOK_SUCCESS': {

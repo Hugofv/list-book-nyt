@@ -44,12 +44,14 @@ const List = ({ books, categories, loading, list_book_category, list_categories 
   if (loading) return <CircularProgress />
   return (
     <Fragment>
-      <Box mb={5} m='2%'>
+      <Box mb={5} m='2%' data-testid='book'>
         <Box mb='2%'>
           <Label>Categoria</Label>
           <Select
             value={category}
             isSearchable
+            classNamePrefix="react_select"
+            data-testid="input-category"
             placeholder='Informe uma categoria'
             onChange={(value) => handleCategory(value)}
             options={categoriesOptions}
@@ -74,7 +76,7 @@ const List = ({ books, categories, loading, list_book_category, list_categories 
                     <TableCell data-title='Autor'>{item.author}</TableCell>
                     <TableCell data-title='Editor'>{item.publisher}</TableCell>
                     <TableCell width={40} lineHeight={0}>
-                      <FaEye style={{ fontSize: '20px', cursor: 'pointer' }} onClick={() => setShowBook({ open: true, book: item })} />
+                      <FaEye data-testid={`show_${item.rank}`} style={{ fontSize: '20px', cursor: 'pointer' }} onClick={() => setShowBook({ open: true, book: item })} />
                     </TableCell>
                   </TableRow>
                 ))}
@@ -88,8 +90,8 @@ const List = ({ books, categories, loading, list_book_category, list_categories 
         <Pagination {...paginationProps} pageSize={10} />
       </Box>
 
-      <Modal open={showBook.open} onClose={() => setShowBook({ open: false, book: {} })} >
-        <Flex css={containerModal} fd='column' h='100%'>
+      <Modal open={showBook.open} closeIconId='icon-close' onClose={() => setShowBook({ open: false, book: {} })} >
+        <Flex data-testid='modal' css={containerModal} fd='column' h='100%'>
           <Box d='inline-table' position='relative' h={64} css={{ flexShrink: 0, borderBottom: '1px solid hsla(216, 40%, 90%, 1)' }}>
             <Box p={3} ta='center'><Text medium>Detalhes - {showBook.book.title}</Text></Box>
           </Box>

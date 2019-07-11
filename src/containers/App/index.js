@@ -8,7 +8,9 @@ const App = () => {
   return (
     <Fragment>
       <GlobalStyle />
-      <Book />
+      <main data-testid="app">
+        <Book />
+      </main>
     </Fragment>
   );
 }
